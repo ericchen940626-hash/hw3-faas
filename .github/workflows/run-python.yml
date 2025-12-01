@@ -1,0 +1,24 @@
+name: Run HW3 FaaS
+
+on:
+  schedule:
+    - cron: "*/1 * * * *"     # 每 1 分鐘執行一次
+  workflow_dispatch:          # 手動執行（作業需要）
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install requirements
+        run: pip install -r requirements.txt
+
+      - name: Run the job
+        run: python main.py
