@@ -1,0 +1,7 @@
+services:
+  - type: cron
+    name: hw3-faas-job
+    schedule: "*/1 * * * *"   # 每 1 分鐘運行一次
+    env: python
+    buildCommand: ""
+    startCommand: "python main.py"
